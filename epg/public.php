@@ -627,7 +627,7 @@ function doParseSourceInfo($urlLine = null, $parseAll = false) {
 
                 case 'ft':
                 case 'filter':
-                    $filter_raw = t2s(trim($value));
+                    $filter_raw = ($Config['cht_to_chs'] ?? 0) ? t2s(trim($value)) : trim($value);
                     $list = array_filter(array_map('trim', explode(',', ltrim($filter_raw, '!'))), 'strlen');
                     if (strpos($filter_raw, '!') === 0) {
                         $black_list = $list;
